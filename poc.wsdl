@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<definitions targetNamespace="http://wsifservice.addressbook/"
+             xmlns:tns="http://wsifservice.addressbook/"
+             xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+             xmlns:format="http://schemas.xmlsoap.org/wsdl/formatbinding/"
+             xmlns:java="http://schemas.xmlsoap.org/wsdl/java/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- type defs -->
+
+    <!-- message declns -->
+    <message name="findByPrimaryKeyRequest">
+        <part name="el" type="xsd:string"/>
+    </message>
+
+    <message name="findByPrimaryKeyResponse">
+        <part name="counterObject" type="xsd:object"/>
+    </message>
+
+    <!-- port type declns -->
+    <portType name="Gadget">
+        <operation name="findByPrimaryKey">
+            <input message="tns:findByPrimaryKeyRequest"/>
+            <output message="tns:findByPrimaryKeyResponse"/>
+        </operation>
+    </portType>
+
+    <!-- binding declns -->
+    <binding name="JavaBinding" type="tns:Gadget">
+        <java:binding/>
+        <format:typeMapping encoding="Java" style="Java">
+            <format:typeMap typeName="xsd:string" formatType="java.lang.String"/>
+            <format:typeMap typeName="xsd:object" formatType="java.lang.Object"/>
+        </format:typeMapping>
+        <operation name="findByPrimaryKey">
+            <java:operation
+                methodName="eval"
+                parameterOrder="el"
+                methodType="instance"
+                returnPart="counterObject"
+            />
+        </operation>
+    </binding>
+
+    <!-- service decln -->
+    <service name="GadgetService">
+        <port name="JavaPort" binding="tns:JavaBinding">
+            <java:address className="javax.el.ELProcessor"/>
+        </port>
+    </service>
+
+</definitions>
