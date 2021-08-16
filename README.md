@@ -8,6 +8,7 @@ This is based on the excellent blog posts of ZDI:
 
 ... and the work of some fine Chinese hackers (I couldn't determine the true source for the code, feel free to open an Issue if you think you deserve credit):
 
+* https://paper.seebug.org/1315/
 * https://vlambda.com/wz_7iyDatDUdvs.html
 * https://cert.360.cn/report/detail?id=3d016bdef66b8e29936f8cb364f265c8
 
