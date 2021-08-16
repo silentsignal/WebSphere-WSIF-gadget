@@ -1,0 +1,33 @@
+<project name="WebSphere WSIF Gadget" default="compile" basedir=".">
+  <description>
+    CVE-2020-4464 / CVE-2020-4450
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="lib" location="lib"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+    <!-- Compile the Java code from ${src} into ${build} -->
+    
+    <javac srcdir="${src}" destdir="${build}">
+      <classpath path=".:${lib}/runtimes/com.ibm.ws.orb_9.0.jar:${lib}/runtimes/com.ibm.ws.admin.client_9.0.jar:${lib}/plugins/com.ibm.ws.managedobject.jar:${lib}/plugins/com.ibm.ws.runtime.jar:plugins/com.ibm.ws.batch.runtime.jar:${lib}/plugins/javax.j2ee.ejb.jar:${lib}/runtimes/com.ibm.jaxws.thinclient_9.0.jar:${lib}/plugins/com.ibm.ws.batch.runtime.jar"/>
+      <compilerarg line="--add-modules jdk.naming.rmi"/>
+      <compilerarg line="--add-exports='jdk.naming.rmi/com.sun.jndi.rmi.registry=ALL-UNNAMED'"/>
+    </javac>
+  </target>
+
+  <target name="clean"
+        description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+  </target>
+</project>
