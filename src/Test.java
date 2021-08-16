@@ -1,5 +1,3 @@
-// javac -cp .:plugins/com.ibm.ws.runtime.jar:plugins/com.ibm.ws.batch.runtime.jar:plugins/javax.j2ee.ejb.jar:runtimes/com.ibm.jaxws.thinclient_9.0.jar --add-modules jdk.naming.rmi --add-exports='jdk.naming.rmi/com.sun.jndi.rmi.registry=ALL-UNNAMED' Test.java
-
 import org.apache.wsif.providers.ejb.*;
 import com.ibm.ws.ejbcontainer.jitdeploy.EJBWrapper;
 import com.ibm.ejs.container.*;
