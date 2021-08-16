@@ -1,0 +1,3 @@
+[submodule "JavaUnserializeExploits"]
+	path = JavaUnserializeExploits
+	url = https://github.com/foxglovesec/JavaUnserializeExploits/
