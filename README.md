@@ -18,7 +18,7 @@ My additions (not much, really):
 * Publicly accessible RMI service
 * Little code cleanup
 
-Foxglove's code is pulled in as a submodule, you can use the WebSphere request file to trigger CVE-2020-4464.
+[FoxGlove's code](https://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/) is pulled in as a submodule, you can use the WebSphere request file to trigger CVE-2020-4464.
 
 You should copy the `plugins` and `runtimes` directories from WebSphere to the `lib` directory, then run `ant` to compile!
 
