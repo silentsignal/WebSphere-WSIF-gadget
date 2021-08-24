@@ -1,7 +1,7 @@
 WSIF Gadget for WebSphere (CVE-2020-4464 / CVE-2020-4450)
 =========================================================
 
-This is based on the excellent blog posts of ZDI:
+This is based on the excellent blog posts of ZDI (original report by [@\_tint0](https://twitter.com/_tint0)):
 
 * https://www.thezdi.com/blog/2020/7/20/abusing-java-remote-protocols-in-ibm-websphere
 * https://www.zerodayinitiative.com/blog/2020/9/29/exploiting-other-remote-protocols-in-ibm-websphere
